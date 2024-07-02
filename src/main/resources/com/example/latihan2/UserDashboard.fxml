@@ -21,12 +21,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: ffffff;">
                <children>
-                  <Label alignment="CENTER" text="Daftar Aduan">
+                  <Label alignment="CENTER" prefWidth="200.0" text="Daftar Aduan">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets right="110.0" />
+                        <Insets right="90.0" />
                      </HBox.margin>
                   </Label>
                   <Separator prefWidth="200.0" />
@@ -36,7 +36,7 @@
                         <Button fx:id="searchButton" layoutX="246.6683349609375" mnemonicParsing="false" text="Cari" />
                      </children>
                   </Group>
-                  <Button minWidth="160" mnemonicParsing="false" text="Buat Aduan Baru" />
+                  <Button fx:id="addAduanButton" minWidth="160" mnemonicParsing="false" text="Buat Aduan Baru" />
                </children>
             </HBox>
             <TableView fx:id="tableView" prefHeight="400.0" prefWidth="938.0">

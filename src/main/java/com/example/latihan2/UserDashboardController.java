@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import static javafx.application.Application.launch;
+
 public class UserDashboardController implements Initializable {
     @FXML
     public ImageView userDashboardBG;
@@ -36,6 +38,8 @@ public class UserDashboardController implements Initializable {
     private TextField searchInput;
     @FXML
     private Button searchButton;
+    @FXML
+    private Button addAduanButton;
     private ObservableList<AduanModel> aduanList = FXCollections.observableArrayList();
 
     private void filterData() {
@@ -91,6 +95,10 @@ public class UserDashboardController implements Initializable {
         loadCSVData();
         // Set search button action
         searchButton.setOnAction(event -> filterData());
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }
 
