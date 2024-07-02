@@ -41,7 +41,11 @@ public class UserDashboardController implements Initializable {
     @FXML
     private Button addAduanButton;
     private ObservableList<AduanModel> aduanList = FXCollections.observableArrayList();
+    private MainApp mainApp;
 
+    public void init(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
     private void filterData() {
         String searchText = searchInput.getText().toLowerCase();
         if (searchText.isEmpty()) {
@@ -76,7 +80,7 @@ public class UserDashboardController implements Initializable {
         userDashboardBG.setImage(image);
     }
 
-    private void loadCSVData() {
+    public void loadCSVData() {
         CSVRowMapper<AduanModel> mapper = values -> new AduanModel(values[0], values[1], values[2], values[3], values[4], values[5]);
         CSVReader<AduanModel> csvReader = new CSVReader<>("/CSV/aduan.csv", mapper);
         aduanList.setAll(csvReader.readCSV());
@@ -95,10 +99,10 @@ public class UserDashboardController implements Initializable {
         loadCSVData();
         // Set search button action
         searchButton.setOnAction(event -> filterData());
+        searchInput.setOnAction(event -> filterData());
     }
-
-    public static void main(String[] args) {
-        launch();
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 }
 
