@@ -16,7 +16,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        switchToAddAduanScene();
+        switchToUserDashboardScene();
     }
 
     public static void main(String[] args) {

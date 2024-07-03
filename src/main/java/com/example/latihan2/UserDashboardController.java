@@ -2,6 +2,8 @@ package com.example.latihan2;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -97,9 +99,18 @@ public class UserDashboardController implements Initializable {
         initializeTableColumns();
         // Load data from CSV
         loadCSVData();
+        addAduanButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                handleAddAduanAction(event);
+            }
+        });
         // Set search button action
         searchButton.setOnAction(event -> filterData());
         searchInput.setOnAction(event -> filterData());
+    }
+    public void handleAddAduanAction(ActionEvent event) {
+        mainApp.switchToAddAduanScene();
     }
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
