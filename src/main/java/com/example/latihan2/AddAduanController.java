@@ -101,11 +101,20 @@ public class AddAduanController implements Initializable {
     }
 
     private void saveFormData() {
-        // Logic to save form data
+        String csvData = gatherFormData();
+        if (csvData != null) {
+            writeAduanToCSV(csvData);
+        }
+    }
+    private String gatherFormData() {
         String profil = "default User";
         String judul = judulField.getText();
         String kategori = kategoriComboBox.getValue();
-        String informasiUmum = judul+" - "+kategori;
+        if (judul.isEmpty() || kategori == null) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please fill in the required fields.");
+            return null;
+        }
+        String informasiUmum = judul + " - " + kategori;
         String kota = kotaField.getText();
         LocalDate waktu = waktuField.getValue();
         String rtRw = rtRwField.getText();
@@ -114,8 +123,7 @@ public class AddAduanController implements Initializable {
         String status = "Belum Diserahkan";
         String detil = rincianAduanArea.getText();
 
-        String csvData = profil + "," + informasiUmum + "," + waktuTempat + "," + tautanCepat + "," + status + "," + detil;
-        writeAduanToCSV(csvData);
+        return profil + "," + informasiUmum + "," + waktuTempat + "," + tautanCepat + "," + status + "," + detil;
     }
     private void writeAduanToCSV(String csvData) {
         Path csvPath = Paths.get("src/main/resources/CSV/aduan.csv");
@@ -180,15 +188,20 @@ public class AddAduanController implements Initializable {
                 Files.createDirectories(resourcesDir);
             }
 
-            // Create a destination file path
-            copiedImageFile = new File(resourcesDir.toFile(), file.getName());
+            // Generate a unique file name
+            String uniqueFileName = System.currentTimeMillis() + "_" + file.getName();
+            Path destinationPath = resourcesDir.resolve(uniqueFileName);
 
-            // Copy the file
-            Files.copy(file.toPath(), copiedImageFile.toPath());
+            // Copy the file to the destination path
+            Files.copy(file.toPath(), destinationPath);
+
+            // Update copiedImageFile to reflect the new path
+            copiedImageFile = destinationPath.toFile();
 
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception (e.g., show an error message)
+            // Notify user of error
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to copy image.");
         }
     }
     private void switchToUserDashboardScene() {

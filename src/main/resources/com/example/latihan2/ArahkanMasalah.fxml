@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.latihan2.ArahkanMasalahController">
+    <children>
+    <ImageView fx:id="arahkanMasalahBG" fitHeight="720.0" fitWidth="1280.0" />
+        <VBox alignment="CENTER" layoutX="259.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" style="-fx-background-color: ffffff; -fx-border-radius: 20 20 20 20; -fx-background-radius: 20 20 20 20;">
+            <children>
+                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="-Infinity" spacing="20.0" style="-fx-background-color: ffffff;">
+                    <children>
+                        <Label alignment="CENTER" minWidth="-Infinity" text="Daftar Dinas">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="90.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="40.0" prefWidth="103.0" />
+                        <Group>
+                            <children>
+                                <TextField fx:id="searchInput" prefHeight="27.0" prefWidth="246.0" />
+                                <Button fx:id="searchButton" layoutX="246.6683349609375" maxWidth="-Infinity" mnemonicParsing="false" text="Cari" />
+                            </children>
+                        </Group>
+                        <Button fx:id="arahkanMasalahButton" maxHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Arahkan" />
+                    </children>
+                </HBox>
+                <TableView fx:id="tableViewDinas" maxWidth="-Infinity" minWidth="-Infinity">
+                    <columns>
+                        <TableColumn fx:id="namaDinasColumn" prefWidth="100" text="Nama Dinas" />
+                        <TableColumn fx:id="alamatDinasColumn" prefWidth="200" text="Alamat Dinas" />
+                        <TableColumn fx:id="kategoriDinasColumn" prefWidth="150" text="Kategori" />
+                        <TableColumn fx:id="emailDinasColumn" prefWidth="150" text="Email" />
+                        <TableColumn fx:id="websiteDinasColumn" prefWidth="120" text="Website" />
+                    </columns>
+                </TableView>
+            <ButtonBar maxHeight="-Infinity" prefWidth="200.0">
+              <buttons>
+                <Button fx:id="addDinasButton" maxWidth="-Infinity" mnemonicParsing="false" text="Tambah Dinas" />
+              </buttons>
+            </ButtonBar>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

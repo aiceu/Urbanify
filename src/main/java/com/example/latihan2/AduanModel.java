@@ -69,4 +69,30 @@ public class AduanModel {
     public void setDetil(String detil) {
         this.detil = detil;
     }
+
+    @Override
+    public String toString() {
+        return profil + "," + judul + "," + waktuTempat + "," + tautanCepat + "," + status + "," + detil;
+    }
+    public String mapToString() {
+        return toString();
+    }
+    public static final CSVRowMapper<AduanModel> MAPPER = new CSVRowMapper<>() {
+        @Override
+        public AduanModel mapRow(String[] row) {
+            return new AduanModel(row[0], row[1], row[2], row[3], row[4], row[5]);
+        }
+
+        @Override
+        public String[] mapRowBack(AduanModel item) {
+            return new String[]{
+                    item.getProfil(),
+                    item.getJudul(),
+                    item.getWaktuTempat(),
+                    item.getTautanCepat(),
+                    item.getStatus(),
+                    item.getDetil()
+            };
+        }
+    };
 }
